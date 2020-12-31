@@ -33,12 +33,12 @@
         shell = pkgs.zsh;
         extraGroups = [
           "audio"
-	        "video"
-	        "vboxuser"
-	        "www"
+          "video"
+          "vboxuser"
+          "www"
           "kvm"
-	        "sudo"
-	      ];
+          "sudo"
+        ];
       };
       www = {
         isNormalUser = true;
@@ -52,7 +52,7 @@
       enable = true;
       videoDrivers = [
         "modesetting"
-	      "amdgpu"
+        "amdgpu"
         "ati"
       ];
       layout = "us";
@@ -60,7 +60,7 @@
       libinput.enable = true;
       displayManager.gdm = {
         enable = true;
-	      wayland = false;
+        wayland = false;
       };
       desktopManager.gnome3.enable = true;
       deviceSection = ''
@@ -70,7 +70,7 @@
     cron = {
       enable = true;
       systemCronJobs = [
-	      "@reboot root /usr/local/share/archbox/bin/archboxinit start"
+        "@reboot root /usr/local/share/archbox/bin/archboxinit start"
       ];
     };
     printing.enable = true;
@@ -83,7 +83,7 @@
       virtualHosts = {
         localhost = {
           documentRoot = "/data/webroot";
-	        locations."/".index = "index.php index.html";
+          locations."/".index = "index.php index.html";
         };
       };
     };
@@ -100,7 +100,7 @@
       driSupport = true;
       extraPackages = with pkgs; [
         rocm-opencl-runtime
-	      rocm-opencl-icd
+        rocm-opencl-icd
       ];
     };
     pulseaudio.enable = true;
@@ -111,52 +111,52 @@
       wget
       networkmanager
       neovim
-	    htop
+      htop
       git
       psmisc
-	    starship
-	    gnome3.gtk
+      starship
+      gnome3.gtk
       gnome3.dconf-editor
-	    gnome3.zenity
-	    gnome3.gucharmap
-	    gnome3.gnome-session
-	    gnome3.gnome-tweak-tool
-	    desktop-file-utils
-	    libsForQt5.qtstyleplugins
+      gnome3.zenity
+      gnome3.gucharmap
+      gnome3.gnome-session
+      gnome3.gnome-tweak-tool
+      desktop-file-utils
+      libsForQt5.qtstyleplugins
       libnotify
       chromium
-	    neofetch
+      neofetch
       zip
       unzip
-	    ibus
-	    exa
-	    bat
-	    vscode
-	    file
-	    obs-studio
-	    ffmpeg
-	    python3
-	    jq
-	    tdesktop
-	    lz4
-	    efibootmgr
-	    pv
-	    vboot_reference
+      ibus
+      exa
+      bat
+      vscode
+      file
+      obs-studio
+      ffmpeg
+      python3
+      jq
+      tdesktop
+      lz4
+      efibootmgr
+      pv
+      vboot_reference
     ];
     variables = {
         VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
-	      PATH = "/usr/bin:/usr/local/bin";
+        PATH = "/usr/bin:/usr/local/bin";
       };
     };
 
   boot = {
     loader.grub = {
-	  enable = true;
-          device = "nodev";
-	  efiSupport = true;
-	  gfxmodeEfi = "1366x768";
-	  splashImage = null;
-	  extraEntries = ''
+    enable = true;
+    device = "nodev";
+    efiSupport = true;
+    gfxmodeEfi = "1366x768";
+    splashImage = null;
+    extraEntries = ''
       menuentry ChromeOS {
         img_part=/dev/sda4
         img_path=/@chromeos/root.img
@@ -167,36 +167,36 @@
           console= vt.global_cursor_default=0 brunch_bootsplash=default
         initrd (loop,7)/lib/firmware/amd-ucode.img (loop,7)/lib/firmware/intel-ucode.img (loop,7)/initramfs.img
       }
-	    '';
-	  };
-	  kernel.sysctl = {
-	    "vm.swappiness" = 1;
-	  };
+      '';
+    };
+    kernel.sysctl = {
+      "vm.swappiness" = 1;
+    };
     kernelParams = [ 
-	      "acpi_backlight=vendor"
-	      "amdgpu.ppfeaturemask=0xffffffff"
-	      "resume=/dev/disk/by-uuid/6d88a58f-c349-4757-8c9b-c7f3c774f8f7"
-	  ];
+        "acpi_backlight=vendor"
+        "amdgpu.ppfeaturemask=0xffffffff"
+        "resume=/dev/disk/by-uuid/6d88a58f-c349-4757-8c9b-c7f3c774f8f7"
+    ];
     kernelPackages = pkgs.linuxPackages_5_9;
-	  initrd = {
-	      kernelModules = [ "amdgpu" ];
-	      compressor = "lz4";
-	  };
+    initrd = {
+        kernelModules = [ "amdgpu" ];
+        compressor = "lz4";
+    };
   };
 
   security = {
     sudo = {
-	    enable = true;
-	    extraRules = [
-	      {
-	        groups = [ "sudo" ];
-	        commands = [ 
-	          "ALL"
-		        { command = "/usr/local/share/archbox/bin/archbox,/usr/local/share/archbox/bin/copyresolv,/usr/local/share/archbox/bin/remount_run"; options = [ "NOPASSWD" ]; }
-	        ];
-	      }
-	    ];
-	  };
+      enable = true;
+      extraRules = [
+        {
+          groups = [ "sudo" ];
+          commands = [ 
+            "ALL"
+            { command = "/usr/local/share/archbox/bin/archbox,/usr/local/share/archbox/bin/copyresolv,/usr/local/share/archbox/bin/remount_run"; options = [ "NOPASSWD" ]; }
+          ];
+        }
+      ];
+    };
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -208,13 +208,13 @@
 
   networking = {
     networkmanager.enable = true;
-	  hostName = "mokounix";
+    hostName = "mokounix";
   };
 
   sound.enable = true;
 
   virtualisation.virtualbox.host = {
     enable = true;
-	  enableExtensionPack = false;
+    enableExtensionPack = false;
   };
 }
