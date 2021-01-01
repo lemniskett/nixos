@@ -8,6 +8,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      ./nixpkgs.nix
       ./mokou.nix
       ./bebasid.nix
     ];

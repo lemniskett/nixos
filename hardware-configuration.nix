@@ -14,40 +14,39 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/fdd1b693-188e-424c-91a1-0a38238e98fe";
-      fsType = "btrfs";
-      options = [ 
-        "subvol=@nixos"
-	"discard=async"
-	"ssd"
-	"noatime"
-	"space_cache"
-	"compress=lzo"
-      ];
-    };
-
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/fdd1b693-188e-424c-91a1-0a38238e98fe";
-      fsType = "btrfs";
-      options = [ 
-        "subvol=@home"
-	"discard=async"
-	"ssd"
-	"noatime"
-	"space_cache"
-	"compress=lzo"
-      ];
-    };
-
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/6B28-CA87";
-      fsType = "vfat";
-    };
-
-  swapDevices =
-    [ 
-      { device = "/dev/disk/by-uuid/6d88a58f-c349-4757-8c9b-c7f3c774f8f7"; }
+  fileSystems."/" = { 
+    device = "/dev/disk/by-uuid/fdd1b693-188e-424c-91a1-0a38238e98fe";
+    fsType = "btrfs";
+    options = [ 
+      "subvol=@nixos"
+      "discard=async"
+      "ssd"
+      "noatime"
+      "space_cache"
+      "compress=lzo"
     ];
+  };
+
+  fileSystems."/home" = { 
+    device = "/dev/disk/by-uuid/fdd1b693-188e-424c-91a1-0a38238e98fe";
+    fsType = "btrfs";
+    options = [ 
+      "subvol=@home"
+      "discard=async"
+      "ssd"
+      "noatime"
+      "space_cache"
+      "compress=lzo"
+    ];
+  };
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/6B28-CA87";
+    fsType = "vfat";
+  };
+
+  swapDevices = [ 
+    { device = "/dev/disk/by-partuuid/de92fdd0-f1d4-4529-a0fd-832f483198fb"; }
+  ];
 
 }

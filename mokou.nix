@@ -5,12 +5,8 @@
 { config, pkgs, ... }:
 
 {
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
-
   programs = {
-  zsh.enable = true;
+    zsh.enable = true;
     qt5ct.enable = true;
     mtr.enable = true;
     gnupg.agent = {
@@ -60,7 +56,7 @@
       libinput.enable = true;
       displayManager.gdm = {
         enable = true;
-        wayland = false;
+        wayland = true;
       };
       desktopManager.gnome3.enable = true;
       deviceSection = ''
@@ -175,7 +171,7 @@
     kernelParams = [ 
         "acpi_backlight=vendor"
         "amdgpu.ppfeaturemask=0xffffffff"
-        "resume=/dev/disk/by-uuid/6d88a58f-c349-4757-8c9b-c7f3c774f8f7"
+        "resume=/dev/disk/by-partuuid/de92fdd0-f1d4-4529-a0fd-832f483198fb"
     ];
     kernelPackages = pkgs.linuxPackages_5_9;
     initrd = {
