@@ -8,9 +8,10 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./nixpkgs.nix
       ./mokou.nix
       ./bebasid.nix
+      ./nixpkgs.nix
+      ./cachix.nix
     ];
 
   # This value determines the NixOS release from which the default
