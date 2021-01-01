@@ -89,6 +89,7 @@
       dataDir = "/data/mysql";
     };
     openssh.enable = true;
+    flatpak.enable = true;
   };
 
   hardware = {
@@ -129,7 +130,6 @@
       bat
       vscode
       file
-      obs-studio
       ffmpeg
       python3
       jq
@@ -139,13 +139,17 @@
       pv
       vboot_reference
       cachix
+      obs-studio-dmabuf
       obs-xdg-portal
+      xdg-desktop-portal-gtk
     ];
     variables = {
       VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
       PATH = "/usr/bin:/usr/local/bin";
     };
   };
+
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   boot = {
     loader.grub = {
