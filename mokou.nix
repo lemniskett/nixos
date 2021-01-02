@@ -13,6 +13,37 @@
       enable = true;
       enableSSHSupport = true;
     };
+    sway = {
+      enable = true;
+      wrapperFeatures.gtk = true; # so that gtk works properly
+      extraPackages = with pkgs; [
+        swaylock
+        swayidle
+        wl-clipboard
+        mako
+        foot
+	libsixel
+	brightnessctl
+	pulsemixer
+	grim
+	slurp
+	pipewire
+	wofi
+	polkit_gnome
+	waybar
+	blur-effect
+	pavucontrol
+	calcurse
+	nnn
+	imv
+	mpv
+	gtk-engine-murrine
+        gtk_engines
+        gsettings-desktop-schemas
+	wf-recorder
+      ];
+    };
+    dconf.enable = true;
   };
 
   time.timeZone = "Asia/Jakarta";
@@ -54,14 +85,7 @@
       layout = "us";
       useGlamor = true;
       libinput.enable = true;
-      displayManager.gdm = {
-        enable = true;
-        wayland = true;
-      };
-      desktopManager.gnome3.enable = true;
-      deviceSection = ''
-        Option "TearFree" "true"
-      '';
+      displayManager.startx.enable = true;
     };
     cron = {
       enable = true;
@@ -89,15 +113,17 @@
       dataDir = "/data/mysql";
     };
     openssh.enable = true;
-    flatpak.enable = true;
-  };
+};
 
   hardware = {
     opengl = {
+      enable = true;
       driSupport = true;
       extraPackages = with pkgs; [
         rocm-opencl-runtime
         rocm-opencl-icd
+	vaapiIntel
+	vaapiVdpau
       ];
     };
     pulseaudio.enable = true;
@@ -115,9 +141,6 @@
       gnome3.gtk
       gnome3.dconf-editor
       gnome3.zenity
-      gnome3.gucharmap
-      gnome3.gnome-session
-      gnome3.gnome-tweak-tool
       desktop-file-utils
       libsForQt5.qtstyleplugins
       libnotify
@@ -139,17 +162,14 @@
       pv
       vboot_reference
       cachix
-      obs-studio-dmabuf
-      obs-xdg-portal
-      xdg-desktop-portal-gtk
+      libva-utils
+      mesa-demos
     ];
     variables = {
       VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
       PATH = "/usr/bin:/usr/local/bin";
     };
   };
-
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   boot = {
     loader.grub = {
