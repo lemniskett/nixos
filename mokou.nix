@@ -5,6 +5,7 @@
 { config, pkgs, ... }:
 
 {
+  system.autoUpgrade.enable = true;
   programs = {
     zsh.enable = true;
     qt5ct.enable = true;
@@ -34,13 +35,19 @@
 	blur-effect
 	pavucontrol
 	calcurse
-	nnn
-	imv
-	mpv
 	gtk-engine-murrine
         gtk_engines
         gsettings-desktop-schemas
 	wf-recorder
+        gnome3.gtk
+        gnome3.dconf-editor
+        gnome3.zenity
+	gnome3.file-roller
+	gnome3.nautilus
+	gnome3.eog
+	celluloid
+	xorg.xhost
+	nwg-launchers
       ];
     };
     dconf.enable = true;
@@ -137,10 +144,6 @@
       htop
       git
       psmisc
-      starship
-      gnome3.gtk
-      gnome3.dconf-editor
-      gnome3.zenity
       desktop-file-utils
       libsForQt5.qtstyleplugins
       libnotify
