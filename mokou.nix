@@ -10,6 +10,35 @@
     zsh.enable = true;
     qt5ct.enable = true;
     mtr.enable = true;
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
+      configure = {
+        customRC = ''
+          set tabstop=4
+          set softtabstop=4
+          set shiftwidth=4
+          set expandtab
+          set autoindent
+          set copyindent
+          set number
+          colorscheme nord
+        '';
+        packages.myVimPackage = with pkgs.vimPlugins; {
+          start = [ 
+            airline
+            nord-vim
+            vim-gutentags
+            coc-git
+            coc-json
+            coc-fzf
+            coc-nvim
+          ];
+        };
+      };
+    };
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
@@ -23,34 +52,34 @@
         wl-clipboard
         mako
         foot
-	libsixel
-	brightnessctl
-	pulsemixer
-	grim
-	slurp
-	pipewire
-	wofi
-	polkit_gnome
-	waybar
-	blur-effect
-	pavucontrol
-	calcurse
-	gtk-engine-murrine
+        libsixel
+        brightnessctl
+        pulsemixer
+        grim
+        slurp
+        pipewire
+        polkit_gnome
+        waybar
+        blur-effect
+        pavucontrol
+        calcurse
+        gtk-engine-murrine
         gtk_engines
         gsettings-desktop-schemas
-	wf-recorder
         gnome3.gtk
         gnome3.dconf-editor
         gnome3.zenity
-	gnome3.file-roller
-	gnome3.nautilus
-	gnome3.eog
-	celluloid
-	xorg.xhost
-	nwg-launchers
+        gnome3.file-roller
+        mate.caja
+        imv
+        xorg.xhost
+        nwg-launchers
+        obs-studio-dmabuf
+        obs-wlrobs
       ];
     };
     dconf.enable = true;
+    firejail.enable = true;
   };
 
   time.timeZone = "Asia/Jakarta";
@@ -59,6 +88,7 @@
     groups = {
       sudo = {};
       www = {};
+      npm = {};
     };
     users = {
       lemniskett = {
@@ -71,12 +101,19 @@
           "vboxuser"
           "www"
           "kvm"
+          "libvirtd"
           "sudo"
+          "networkmanager"
+          "npm"
         ];
       };
       www = {
         isNormalUser = true;
         home = "/etc/user/www";
+      };
+      npm = {
+        isNormalUser = true;
+        home = "/etc/user/npm";
       };
     };
   };
@@ -129,8 +166,8 @@
       extraPackages = with pkgs; [
         rocm-opencl-runtime
         rocm-opencl-icd
-	vaapiIntel
-	vaapiVdpau
+          vaapiIntel
+          vaapiVdpau
       ];
     };
     pulseaudio.enable = true;
@@ -140,7 +177,6 @@
     systemPackages = with pkgs; [
       wget
       networkmanager
-      neovim
       htop
       git
       psmisc
@@ -167,6 +203,16 @@
       cachix
       libva-utils
       mesa-demos
+      imagemagick
+      libav
+      gimp
+      ncmpcpp
+      mpd
+      gparted
+      p7zip
+      retroarchBare
+      python39Packages.pip
+      nodejs
     ];
     variables = {
       VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
@@ -174,42 +220,7 @@
     };
   };
 
-  boot = {
-    loader.grub = {
-    enable = true;
-    device = "nodev";
-    efiSupport = true;
-    gfxmodeEfi = "1366x768";
-    splashImage = null;
-    extraEntries = ''
-      menuentry ChromeOS {
-        img_part=/dev/sda4
-        img_path=/@chromeos/root.img
-        search --no-floppy --set=root --file $img_path
-        loopback loop $img_path
-        linux (loop,7)/kernel boot=local noresume noswap loglevel=7 disablevmx=off \
-          cros_secure cros_debug options=rtl8723de,acpi_power_button,enable_updates enforce_hyperthreading=1 loop.max_part=16 img_part=$img_part img_path=$img_path \
-          console= vt.global_cursor_default=0 brunch_bootsplash=default
-        initrd (loop,7)/lib/firmware/amd-ucode.img (loop,7)/lib/firmware/intel-ucode.img (loop,7)/initramfs.img
-      }
-      '';
-    };
-    kernel.sysctl = {
-      "vm.swappiness" = 1;
-    };
-    kernelParams = [ 
-        "acpi_backlight=vendor"
-        "amdgpu.ppfeaturemask=0xffffffff"
-        "resume=/dev/disk/by-partuuid/de92fdd0-f1d4-4529-a0fd-832f483198fb"
-    ];
-    kernelPackages = pkgs.linuxPackages_5_9;
-    initrd = {
-        kernelModules = [ "amdgpu" ];
-        compressor = "lz4";
-    };
-  };
-
-  security = {
+ security = {
     sudo = {
       enable = true;
       extraRules = [
@@ -227,7 +238,6 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   console = {
-    font = "Lat2-Terminus16";
     keyMap = "us";
   };
 
@@ -238,8 +248,11 @@
 
   sound.enable = true;
 
-  virtualisation.virtualbox.host = {
-    enable = true;
-    enableExtensionPack = false;
+  virtualisation = {
+    libvirtd.enable = false;
+    virtualbox.host = {
+      enable = true;
+      enableExtensionPack = false;
+    };
   };
 }

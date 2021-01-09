@@ -23,7 +23,7 @@
       "ssd"
       "noatime"
       "space_cache"
-      "compress=lzo"
+      "compress-force=zstd:1"
     ];
   };
 
@@ -36,7 +36,7 @@
       "ssd"
       "noatime"
       "space_cache"
-      "compress=lzo"
+      "compress-force=zstd:1"
     ];
   };
 
