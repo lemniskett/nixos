@@ -29,8 +29,7 @@
         packages.myVimPackage = with pkgs.vimPlugins; {
           start = [ 
             airline
-            nord-vim
-            vim-gutentags
+            nord-vim            
             coc-git
             coc-json
             coc-fzf
@@ -72,6 +71,7 @@
         gnome3.file-roller
         mate.caja
         imv
+        mpv
         xorg.xhost
         nwg-launchers
         obs-studio-dmabuf
@@ -87,7 +87,6 @@
   users = {
     groups = {
       sudo = {};
-      www = {};
       npm = {};
     };
     users = {
@@ -105,11 +104,8 @@
           "sudo"
           "networkmanager"
           "npm"
+          "mysql"
         ];
-      };
-      www = {
-        isNormalUser = true;
-        home = "/etc/user/www";
       };
       npm = {
         isNormalUser = true;
@@ -138,24 +134,6 @@
       ];
     };
     printing.enable = true;
-    httpd = {
-      user = "www";
-      group = "www";
-      enable = true;
-      enablePHP = true;
-      adminAddr = "lemniskett@outlook.com";
-      virtualHosts = {
-        localhost = {
-          documentRoot = "/data/webroot";
-          locations."/".index = "index.php index.html";
-        };
-      };
-    };
-    mysql = {
-      enable = true;
-      package = pkgs.mariadb;
-      dataDir = "/data/mysql";
-    };
     openssh.enable = true;
 };
 
