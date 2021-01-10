@@ -11,6 +11,7 @@
       ./mokou.nix
       ./bebasid.nix
       ./nixpkgs.nix
+      ./nvim.nix
       ./lamp.nix
       ./cachix.nix
       ./boot.nix
