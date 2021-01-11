@@ -15,6 +15,7 @@
       ./lamp.nix
       ./cachix.nix
       ./boot.nix
+      ./scripts.nix
     ];
 
   # This value determines the NixOS release from which the default

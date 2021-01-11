@@ -41,13 +41,15 @@
         gnome3.dconf-editor
         gnome3.zenity
         gnome3.file-roller
-        mate.caja
+        gnome3.adwaita-icon-theme
+        pcmanfm
         imv
         mpv
         xorg.xhost
         nwg-launchers
         obs-studio-dmabuf
         obs-wlrobs
+        wdisplays
       ];
     };
     dconf.enable = true;
@@ -201,7 +203,7 @@
   virtualisation = {
     libvirtd.enable = false;
     virtualbox.host = {
-      enable = true;
+      enable = false;
       enableExtensionPack = false;
     };
   };
