@@ -23,7 +23,8 @@
       "ssd"
       "noatime"
       "space_cache"
-      "compress-force=zstd:1"
+      "compress-force=lzo"
+      "autodefrag"
     ];
   };
 
@@ -36,7 +37,8 @@
       "ssd"
       "noatime"
       "space_cache"
-      "compress-force=zstd:1"
+      "compress-force=lzo"
+      "autodefrag"
     ];
   };
 
@@ -44,9 +46,9 @@
     device = "/dev/disk/by-uuid/6B28-CA87";
     fsType = "vfat";
   };
-
-  swapDevices = [ 
-    { device = "/dev/disk/by-partuuid/de92fdd0-f1d4-4529-a0fd-832f483198fb"; }
-  ];
-
+  
+  zramSwap = {
+    enable = true;
+    algorithm = "lz4";
+  };
 }

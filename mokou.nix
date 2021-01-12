@@ -28,8 +28,6 @@
         pulsemixer
         grim
         slurp
-        pipewire
-        polkit_gnome
         waybar
         blur-effect
         pavucontrol
@@ -42,7 +40,7 @@
         gnome3.zenity
         gnome3.file-roller
         gnome3.adwaita-icon-theme
-        pcmanfm
+        gnome3.nautilus
         imv
         mpv
         xorg.xhost
@@ -79,6 +77,7 @@
           "networkmanager"
           "npm"
           "mysql"
+          "docker"
         ];
       };
       npm = {
@@ -131,7 +130,6 @@
       networkmanager
       htop
       git
-      psmisc
       desktop-file-utils
       libsForQt5.qtstyleplugins
       libnotify
@@ -165,6 +163,7 @@
       retroarchBare
       python39Packages.pip
       nodejs
+      evince
     ];
     variables = {
       VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
@@ -203,8 +202,9 @@
   virtualisation = {
     libvirtd.enable = false;
     virtualbox.host = {
-      enable = false;
+      enable = true;
       enableExtensionPack = false;
     };
+    docker.enable = true;
   };
 }

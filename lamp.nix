@@ -24,9 +24,7 @@ in
       virtualHosts = {
         domain = {
           documentRoot = "/data/webroot";
-          locations = {
-            "/".index = "index.php index.html";
-          };
+          locations."/".index = "index.php index.html";
         };
       };
     };

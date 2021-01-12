@@ -40,10 +40,10 @@
 	"amdgpu.dpm=1"
 	"amdgpu.modeset=1"
     ];
-    kernelPackages = pkgs.linuxPackages_lqx;
+    kernelPackages = pkgs.linuxPackages_5_9;
     initrd = {
         kernelModules = [ "amdgpu" ];
-        compressor = "zstd";
+        compressor = "lz4";
     };
   };
 }
