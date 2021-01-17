@@ -1,7 +1,6 @@
 { config, pkgs, ...}:
 
 let
-  domain = "localhost";
   asUser = "www";
   asGroup = "www";
 in
@@ -20,10 +19,11 @@ in
       group = asGroup;
       enable = true;
       enablePHP = true;
+      phpPackage = pkgs.php74;
       adminAddr = "lemniskett@outlook.com";
       virtualHosts = {
-        domain = {
-          documentRoot = "/data/webroot";
+        localhost = {
+          documentRoot = "/data/webroot/halochat/app";
           locations."/".index = "index.php index.html";
         };
       };

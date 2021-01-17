@@ -48,6 +48,7 @@
         obs-studio-dmabuf
         obs-wlrobs
         wdisplays
+        jmtpfs
       ];
     };
     dconf.enable = true;
@@ -70,14 +71,13 @@
           "audio"
           "video"
           "vboxuser"
-          "www"
           "kvm"
-          "libvirtd"
           "sudo"
           "networkmanager"
           "npm"
-          "mysql"
           "docker"
+          "www"
+          "mysql"
         ];
       };
       npm = {
@@ -147,14 +147,9 @@
       jq
       tdesktop
       lz4
-      efibootmgr
       pv
-      vboot_reference
       cachix
-      libva-utils
-      mesa-demos
       imagemagick
-      libav
       gimp
       ncmpcpp
       mpd
@@ -164,6 +159,8 @@
       python39Packages.pip
       nodejs
       evince
+      php74
+      qbittorrent
     ];
     variables = {
       VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
@@ -195,6 +192,10 @@
   networking = {
     networkmanager.enable = true;
     hostName = "mokounix";
+    firewall = {
+      allowedUDPPorts = [ 80 22 ];
+      allowedTCPPorts = [ 80 22 ];
+    };
   };
 
   sound.enable = true;
@@ -205,6 +206,5 @@
       enable = true;
       enableExtensionPack = false;
     };
-    docker.enable = true;
   };
 }

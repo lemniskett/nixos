@@ -1,5 +1,5 @@
 { config, ... }:
 
 {
-  networking.extraHosts = builtins.fetchurl "https://raw.githubusercontent.com/bebasid/bebasid/master/releases/hosts";
+  networking.extraHosts = builtins.readFile (builtins.fetchurl "https://raw.githubusercontent.com/bebasid/bebasid/master/releases/hosts");
 }

@@ -29,9 +29,8 @@
       "vm.swappiness" = 1;
     };
     kernelParams = [ 
-        "acpi_backlight=vendor"
-        "amdgpu.ppfeaturemask=0xffffffff"
-        "resume=/dev/disk/by-partuuid/de92fdd0-f1d4-4529-a0fd-832f483198fb"
+    "acpi_backlight=vendor"
+    "amdgpu.ppfeaturemask=0xffffffff"
 	"radeon.si_support=0"
 	"radeon.cik_support=0"
 	"amdgpu.si_support=1"
@@ -42,8 +41,8 @@
     ];
     kernelPackages = pkgs.linuxPackages_5_9;
     initrd = {
-        kernelModules = [ "amdgpu" ];
-        compressor = "lz4";
+      kernelModules = [ "amdgpu" ];
+      compressor = "lz4";
     };
   };
 }
