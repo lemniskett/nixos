@@ -19,11 +19,10 @@ in
       group = asGroup;
       enable = true;
       enablePHP = true;
-      phpPackage = pkgs.php74;
       adminAddr = "lemniskett@outlook.com";
       virtualHosts = {
         localhost = {
-          documentRoot = "/data/webroot/halochat/app";
+          documentRoot = "/data/webroot";
           locations."/".index = "index.php index.html";
         };
       };
@@ -32,6 +31,16 @@ in
       enable = true;
       package = pkgs.mariadb;
       dataDir = "/data/mysql";
+    };
+    postgresql = {
+      enable = true;
+      package = pkgs.postgresql_11;
+      dataDir = "/data/psql";
+      enableTCPIP = true;
+      authentication = pkgs.lib.mkOverride 10 ''
+        local all all trust
+        host all all ::1/128 trust
+      '';
     };
   };
 }

@@ -5,7 +5,6 @@
 { config, pkgs, ... }:
 
 {
-  system.autoUpgrade.enable = true;
   programs = {
     zsh.enable = true;
     qt5ct.enable = true;
@@ -42,7 +41,6 @@
         gnome3.adwaita-icon-theme
         gnome3.nautilus
         imv
-        mpv
         xorg.xhost
         nwg-launchers
         obs-studio-dmabuf
@@ -159,8 +157,11 @@
       python39Packages.pip
       nodejs
       evince
-      php74
+      php
+      phpPackages.composer2
       qbittorrent
+      vlc
+      ntfs3g
     ];
     variables = {
       VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
