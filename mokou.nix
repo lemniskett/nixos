@@ -6,6 +6,7 @@
 
 {
   programs = {
+    adb.enable = true;
     zsh.enable = true;
     qt5ct.enable = true;
     mtr.enable = true;
@@ -19,6 +20,7 @@
       extraPackages = with pkgs; [
         swaylock
         swayidle
+        swaybg
         wl-clipboard
         mako
         foot
@@ -46,7 +48,6 @@
         obs-studio-dmabuf
         obs-wlrobs
         wdisplays
-        jmtpfs
       ];
     };
     dconf.enable = true;
@@ -76,6 +77,7 @@
           "docker"
           "www"
           "mysql"
+          "adbusers"
         ];
       };
       npm = {
@@ -101,12 +103,12 @@
     cron = {
       enable = true;
       systemCronJobs = [
-        "@reboot root /usr/local/share/archbox/bin/archboxinit start"
+        "@reboot root /usr/local/bin/archbox --mount"
       ];
     };
     printing.enable = true;
     openssh.enable = true;
-};
+  };
 
   hardware = {
     opengl = {
@@ -162,6 +164,10 @@
       qbittorrent
       vlc
       ntfs3g
+      usbutils
+      glib
+      jmtpfs
+      unrar
     ];
     variables = {
       VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
