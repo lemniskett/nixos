@@ -58,7 +58,6 @@
 
   users = {
     groups = {
-      sudo = {};
       npm = {};
     };
     users = {
@@ -71,7 +70,6 @@
           "video"
           "vboxuser"
           "kvm"
-          "sudo"
           "networkmanager"
           "npm"
           "docker"
@@ -134,7 +132,6 @@
       libsForQt5.qtstyleplugins
       libnotify
       chromium
-      neofetch
       zip
       unzip
       ibus
@@ -167,6 +164,7 @@
       usbutils
       glib
       jmtpfs
+      sshfs
       unrar
     ];
     variables = {
@@ -176,15 +174,42 @@
   };
 
  security = {
-    sudo = {
+    doas = {
       enable = true;
       extraRules = [
+        { 
+          users = [ "lemniskett" ];
+          keepEnv = false;
+          persist = true;
+          setEnv = [ "TERMINFO" "TERMINFO_DIRS" ];
+        }
         {
-          groups = [ "sudo" ];
-          commands = [ 
-            "ALL"
-            { command = "/usr/local/share/archbox/bin/archbox,/usr/local/share/archbox/bin/copyresolv,/usr/local/share/archbox/bin/remount_run"; options = [ "NOPASSWD" ]; }
-          ];
+          users = [ "lemniskett" ];
+          cmd = "/usr/local/share/archbox/bin/archbox"; 
+          runAs = "root";
+          noPass = true;
+          keepEnv = false;
+        }
+        {
+          users = [ "lemniskett" ];
+          cmd = "/usr/local/share/archbox/bin/copyresolv";
+          runAs = "root";
+          noPass = true;
+          keepEnv = false;
+        }
+        {
+          users = [ "lemniskett" ];
+          cmd = "/usr/local/share/archbox/bin/remount_run";
+          runAs = "root";
+          noPass = true;
+          keepEnv = false;
+        }
+        { 
+          users = [ "lemniskett" ];
+          cmd = "/usr/local/share/archbox/bin/archboxinit"; 
+          runAs = "root";
+          noPass = true;
+          keepEnv = false;
         }
       ];
     };
