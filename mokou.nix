@@ -173,7 +173,8 @@
     };
   };
 
- security = {
+  security = {
+    sudo.enable = false; 
     doas = {
       enable = true;
       extraRules = [
@@ -181,7 +182,7 @@
           users = [ "lemniskett" ];
           keepEnv = false;
           persist = true;
-          setEnv = [ "TERMINFO" "TERMINFO_DIRS" ];
+          setEnv = [ "TERMINFO" "TERMINFO_DIRS" "NIX_PATH" "NIXPKGS_CONFIG" "NIX_PROFILES" "NIX_USER_PROFILE_DIR" ];
         }
         {
           users = [ "lemniskett" ];
