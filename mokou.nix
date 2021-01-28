@@ -73,8 +73,8 @@
           "networkmanager"
           "npm"
           "docker"
-          "www"
-          "mysql"
+          #"www"
+          #"mysql"
           "adbusers"
         ];
       };
@@ -156,8 +156,6 @@
       python39Packages.pip
       nodejs
       evince
-      php
-      phpPackages.composer2
       qbittorrent
       vlc
       ntfs3g
@@ -226,8 +224,8 @@
     networkmanager.enable = true;
     hostName = "mokounix";
     firewall = {
-      allowedUDPPorts = [ 80 22 ];
-      allowedTCPPorts = [ 80 22 ];
+      #allowedUDPPorts = [ 80 22 ];
+      #allowedTCPPorts = [ 80 22 ];
     };
   };
 
