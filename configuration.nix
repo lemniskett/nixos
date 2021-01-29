@@ -16,6 +16,7 @@
       ./cachix.nix
       ./boot.nix
       ./scripts.nix
+      # ./rtw88.nix
     ];
 
   # This value determines the NixOS release from which the default

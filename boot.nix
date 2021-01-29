@@ -3,7 +3,9 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-
+let 
+  oldpkgs = import <nixos-old> { config = config.nixpkgs.config; };
+in
 {
   boot = {
     loader.grub = {
@@ -39,7 +41,7 @@
 	"amdgpu.dpm=1"
 	"amdgpu.modeset=1"
     ];
-    kernelPackages = pkgs.linuxPackages_5_9;
+    kernelPackages = oldpkgs.linuxPackages_zen;
     initrd = {
       kernelModules = [ "amdgpu" ];
       compressor = "lz4";

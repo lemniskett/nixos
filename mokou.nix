@@ -113,8 +113,8 @@
       enable = true;
       driSupport = true;
       extraPackages = with pkgs; [
-        rocm-opencl-runtime
-        rocm-opencl-icd
+          #rocm-opencl-runtime
+          #rocm-opencl-icd
           vaapiIntel
           vaapiVdpau
       ];
