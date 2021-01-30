@@ -21,6 +21,8 @@
         swaylock
         swayidle
         swaybg
+        xdg-desktop-portal
+        xdg-desktop-portal-wlr
         wl-clipboard
         mako
         foot
@@ -53,6 +55,8 @@
     dconf.enable = true;
     firejail.enable = true;
   };
+  
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
 
   time.timeZone = "Asia/Jakarta";
 
@@ -106,6 +110,13 @@
     };
     printing.enable = true;
     openssh.enable = true;
+    pipewire = {
+      enable = true;
+      # Compatibility shims, adjust according to your needs
+      alsa.enable = true;
+      pulse.enable = true;
+      jack.enable = true;
+    };
   };
 
   hardware = {
@@ -119,7 +130,6 @@
           vaapiVdpau
       ];
     };
-    pulseaudio.enable = true;
   };
 
   environment = {
@@ -132,6 +142,7 @@
       libsForQt5.qtstyleplugins
       libnotify
       chromium
+      firefox-wayland
       zip
       unzip
       ibus
@@ -172,6 +183,7 @@
   };
 
   security = {
+    rtkit.enable = true;
     sudo.enable = false; 
     doas = {
       enable = true;
