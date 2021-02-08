@@ -41,7 +41,7 @@ in
 	"amdgpu.dpm=1"
 	"amdgpu.modeset=1"
     ];
-    kernelPackages = oldpkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_zen;
     initrd = {
       kernelModules = [ "amdgpu" ];
       compressor = "lz4";

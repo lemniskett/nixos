@@ -62,6 +62,7 @@
 
   users = {
     groups = {
+      http = {};
       npm = {};
     };
     users = {
@@ -77,6 +78,7 @@
           "networkmanager"
           "npm"
           "docker"
+          "http"
           #"www"
           #"mysql"
           "adbusers"
@@ -142,7 +144,6 @@
       libsForQt5.qtstyleplugins
       libnotify
       chromium
-      firefox-wayland
       zip
       unzip
       ibus
@@ -175,6 +176,8 @@
       jmtpfs
       sshfs
       unrar
+      f2fs-tools
+      php
     ];
     variables = {
       VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";

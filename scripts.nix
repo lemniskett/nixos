@@ -3,7 +3,7 @@
 let
   chromium-ozone = pkgs.writeScriptBin "chromium-ozone" ''
     #!${pkgs.stdenv.shell}
-    exec ${pkgs.chromium}/bin/chromium --enable-features=UseOzonePlatform --ozone-platform=wayland $@
+    exec ${pkgs.chromium}/bin/chromium --enable-features=UseOzonePlatform --ozone-platform=wayland "$@"
   '';
   wlr-portal = pkgs.writeScriptBin "wlr-portal" ''
     #!${pkgs.stdenv.shell}

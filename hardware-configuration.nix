@@ -25,6 +25,7 @@
       "space_cache"
       "compress-force=lzo"
       "autodefrag"
+      "nodatasum"
     ];
   };
 
@@ -39,6 +40,7 @@
       "space_cache"
       "compress-force=lzo"
       "autodefrag"
+      "nodatasum"
     ];
   };
 

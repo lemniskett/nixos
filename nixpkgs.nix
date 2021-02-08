@@ -5,7 +5,12 @@ let
 in
 {
   nixpkgs = {
-    config.allowUnfree = true;
+    config = {
+      allowUnfree = true;
+      permittedInsecurePackages = [
+        "libsixel-1.8.6"
+      ];
+    }
     overlays = [
       waylandOverlay
     ];
