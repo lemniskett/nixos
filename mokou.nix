@@ -62,7 +62,9 @@
 
   users = {
     groups = {
-      http = {};
+      http = {
+        gid = 33;
+      };
       npm = {};
     };
     users = {
@@ -178,6 +180,7 @@
       unrar
       f2fs-tools
       php
+      hashcash
     ];
     variables = {
       VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";

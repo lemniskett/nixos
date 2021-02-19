@@ -10,7 +10,7 @@ in
       permittedInsecurePackages = [
         "libsixel-1.8.6"
       ];
-    }
+    };
     overlays = [
       waylandOverlay
     ];
