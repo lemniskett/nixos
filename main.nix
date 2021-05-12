@@ -16,7 +16,7 @@
     };
     sway = {
       enable = true;
-      wrapperFeatures.gtk = true; # so that gtk works properly
+      wrapperFeatures.gtk = true;
       extraPackages = with pkgs; [
         swaylock
         swayidle
@@ -68,8 +68,8 @@
       npm = {};
     };
     users = {
-      lemniskett = {
-        description = "Lemniskett";
+      lemni = {
+        description = "Me";
         isNormalUser = true;
         shell = pkgs.zsh;
         extraGroups = [
@@ -78,17 +78,9 @@
           "vboxuser"
           "kvm"
           "networkmanager"
-          "npm"
           "docker"
-          "http"
-          #"www"
-          #"mysql"
           "adbusers"
         ];
-      };
-      npm = {
-        isNormalUser = true;
-        home = "/etc/user/npm";
       };
     };
   };
@@ -106,17 +98,10 @@
       libinput.enable = true;
       displayManager.startx.enable = true;
     };
-    cron = {
-      enable = true;
-      systemCronJobs = [
-        "@reboot root /usr/local/bin/archbox --mount"
-      ];
-    };
     printing.enable = true;
     openssh.enable = true;
     pipewire = {
       enable = true;
-      # Compatibility shims, adjust according to your needs
       alsa.enable = true;
       pulse.enable = true;
       jack.enable = true;
@@ -128,8 +113,8 @@
       enable = true;
       driSupport = true;
       extraPackages = with pkgs; [
-          #rocm-opencl-runtime
-          #rocm-opencl-icd
+          rocm-opencl-runtime
+          rocm-opencl-icd
           vaapiIntel
           vaapiVdpau
       ];
@@ -148,9 +133,6 @@
       chromium
       zip
       unzip
-      ibus
-      exa
-      bat
       vscode
       file
       ffmpeg
@@ -166,70 +148,18 @@
       mpd
       gparted
       p7zip
-      retroarchBare
       python39Packages.pip
-      nodejs
-      evince
-      qbittorrent
-      vlc
       ntfs3g
-      usbutils
-      glib
-      jmtpfs
       sshfs
-      unrar
-      f2fs-tools
-      php
-      hashcash
     ];
     variables = {
       VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
-      PATH = "/usr/bin:/usr/local/bin";
     };
   };
 
   security = {
     rtkit.enable = true;
-    sudo.enable = false; 
-    doas = {
-      enable = true;
-      extraRules = [
-        { 
-          users = [ "lemniskett" ];
-          keepEnv = false;
-          persist = true;
-          setEnv = [ "TERMINFO" "TERMINFO_DIRS" "NIX_PATH" "NIXPKGS_CONFIG" "NIX_PROFILES" "NIX_USER_PROFILE_DIR" ];
-        }
-        {
-          users = [ "lemniskett" ];
-          cmd = "/usr/local/share/archbox/bin/archbox"; 
-          runAs = "root";
-          noPass = true;
-          keepEnv = false;
-        }
-        {
-          users = [ "lemniskett" ];
-          cmd = "/usr/local/share/archbox/bin/copyresolv";
-          runAs = "root";
-          noPass = true;
-          keepEnv = false;
-        }
-        {
-          users = [ "lemniskett" ];
-          cmd = "/usr/local/share/archbox/bin/remount_run";
-          runAs = "root";
-          noPass = true;
-          keepEnv = false;
-        }
-        { 
-          users = [ "lemniskett" ];
-          cmd = "/usr/local/share/archbox/bin/archboxinit"; 
-          runAs = "root";
-          noPass = true;
-          keepEnv = false;
-        }
-      ];
-    };
+    sudo.enable = true;
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -242,15 +172,14 @@
     networkmanager.enable = true;
     hostName = "mokounix";
     firewall = {
-      #allowedUDPPorts = [ 80 22 ];
-      #allowedTCPPorts = [ 80 22 ];
+      allowedUDPPorts = [ 22 ];
+      allowedTCPPorts = [ 22 ];
     };
   };
 
   sound.enable = true;
 
   virtualisation = {
-    libvirtd.enable = false;
     virtualbox.host = {
       enable = true;
       enableExtensionPack = false;

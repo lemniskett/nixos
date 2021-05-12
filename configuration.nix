@@ -8,15 +8,11 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./mokou.nix
+      ./boot.nix
+      ./main.nix
       ./bebasid.nix
       ./nixpkgs.nix
-      # ./lamp.nix
       ./nvim.nix
-      ./cachix.nix
-      ./boot.nix
-      ./scripts.nix
-      # ./rtw88.nix
     ];
 
   # This value determines the NixOS release from which the default
