@@ -10,6 +10,7 @@
     ./boot.nix
     ./main.nix
     ./bebasid.nix
+    ./nixpkgs.nix
   ];
 
   # This value determines the NixOS release from which the default

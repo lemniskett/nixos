@@ -29,7 +29,8 @@
     kernelPackages = pkgs.linuxPackages_zen;
     initrd = {
       kernelModules = [ "amdgpu" ];
-      compressor = "lz4";
+      compressor = "zstd";
+      compressorArgs = "-1";
     };
   };
 }
