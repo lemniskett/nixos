@@ -5,15 +5,14 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./boot.nix
-      ./main.nix
-      ./bebasid.nix
-      ./nixpkgs.nix
-      ./nvim.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ./boot.nix
+    ./main.nix
+    ./bebasid.nix
+    ./nixpkgs.nix
+    ./nvim.nix
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
