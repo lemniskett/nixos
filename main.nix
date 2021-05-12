@@ -32,7 +32,6 @@
         grim
         slurp
         waybar
-        blur-effect
         pavucontrol
         calcurse
         gtk-engine-murrine
@@ -47,9 +46,6 @@
         imv
         xorg.xhost
         nwg-launchers
-        obs-studio-dmabuf
-        obs-wlrobs
-        wdisplays
       ];
     };
     dconf.enable = true;
