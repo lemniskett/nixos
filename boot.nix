@@ -3,17 +3,19 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-let 
-  oldpkgs = import <nixos-old> { config = config.nixpkgs.config; };
-in
+
 {
   boot = {
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/efi";
+    };
     loader.grub = {
-    enable = true;
-    device = "nodev";
-    efiSupport = true;
-    gfxmodeEfi = "1366x768";
-    splashImage = null;
+      enable = true;
+      device = "nodev";
+      efiSupport = true;
+      gfxmodeEfi = "1366x768";
+      splashImage = null;
     };
     kernel.sysctl = {
       "vm.swappiness" = 1;
