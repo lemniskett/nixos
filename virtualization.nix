@@ -6,5 +6,9 @@
             enable = true;
             enableExtensionPack = false;
         };
+        podman = {
+            enable = true;
+            dockerCompat = true;
+        };
     };
 }
