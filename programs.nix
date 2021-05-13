@@ -3,12 +3,15 @@
 {
     programs = {
         adb.enable = true;
-        zsh.enable = true;
         qt5ct.enable = true;
         mtr.enable = true;
         gnupg.agent = {
             enable = true;
             enableSSHSupport = true;
+        };
+        zsh = {
+            enable = true;
+            promptInit = "eval \"$(${pkgs.starship}/bin/starship init zsh)\"";
         };
         sway = {
             enable = true;
