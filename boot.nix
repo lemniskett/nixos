@@ -5,32 +5,31 @@
 { config, pkgs, ... }:
 
 {
-  boot = {
-    loader = {
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot/efi";
-      };
-      grub = {
-        enable = true;
-        device = "nodev";
-        efiSupport = true;
-        gfxmodeEfi = "1366x768";
-        splashImage = null;
-      };
+    boot = {
+        loader = {
+            efi = {
+                canTouchEfiVariables = true;
+                efiSysMountPoint = "/boot/efi";
+            };
+            grub = {
+                enable = true;
+                device = "nodev";
+                efiSupport = true;
+                gfxmodeEfi = "1366x768";
+                splashImage = null;
+            };
+        };
+        kernel.sysctl = {
+            "vm.swappiness" = 1;
+        };
+        kernelParams = [ 
+            "acpi_backlight=vendor"
+            "amdgpu.ppfeaturemask=0xffffffff"
+            "net.ifnames=0"
+        ];
+        kernelPackages = pkgs.linuxPackages_latest;
+        initrd = {
+            kernelModules = [ "amdgpu" ];
+        };
     };
-    kernel.sysctl = {
-      "vm.swappiness" = 1;
-    };
-    kernelParams = [ 
-      "acpi_backlight=vendor"
-      "amdgpu.ppfeaturemask=0xffffffff"
-    ];
-    kernelPackages = pkgs.linuxPackages_zen;
-    initrd = {
-      kernelModules = [ "amdgpu" ];
-      compressor = "zstd";
-      compressorArgs = "-1";
-    };
-  };
 }
