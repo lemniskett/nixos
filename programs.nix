@@ -41,11 +41,13 @@
                 gnome3.file-roller
                 gnome3.adwaita-icon-theme
                 gnome3.nautilus
-                imv
+                gnome3.eog
+                celluloid
                 xorg.xhost
                 nwg-launchers
                 lxappearance-gtk2
                 pulseaudio
+                lxsession
             ];
         };
         dconf.enable = true;
