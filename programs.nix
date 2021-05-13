@@ -48,7 +48,9 @@
         dconf.enable = true;
         firejail.enable = true;
     };
-    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
+    xdg.portal.enable = true;
+    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
+    xdg.portal.gtkUsePortal = true;
     environment = {
         systemPackages = with pkgs; [
             htop
@@ -64,6 +66,7 @@
             unzip
             zip
             vscode
+            tdesktop
         ];
     };
 }

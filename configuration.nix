@@ -17,6 +17,7 @@
         ./bebasid.nix
         ./nixpkgs.nix
         ./neovim.nix
+        ./scripts.nix
     ];
     system.stateVersion = "20.09"; # Don't change
 }
