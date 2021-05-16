@@ -4,7 +4,7 @@
     imports = [
         ./hardware-configuration.nix
         ./boot.nix
-        ./programs.nix
+        ./packages.nix
         ./locale.nix
         ./users.nix
         ./services.nix
@@ -16,7 +16,7 @@
         ./virtualization.nix
         ./bebasid.nix
         ./nixpkgs.nix
-        ./neovim.nix
+        ./editor.nix
         ./scripts.nix
     ];
     system.stateVersion = "20.09"; # Don't change

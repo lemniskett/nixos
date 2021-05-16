@@ -48,6 +48,8 @@
                 lxappearance-gtk2
                 pulseaudio
                 lxsession
+                psmisc
+                jmtpfs
             ];
         };
         dconf.enable = true;
@@ -72,6 +74,20 @@
             zip
             vscode
             tdesktop
+            gimp
+            evince
+            desmume
+            qemu
+            ansible
+            awscli2
+            terraform_0_15
+            file
         ];
     };
+    fonts.fonts = with pkgs; [
+        (nerdfonts.override { fonts = [ "Iosevka" ]; })
+        cantarell-fonts
+        opensans-ttf
+    ];
+    system.autoUpgrade.enable = true;
 }

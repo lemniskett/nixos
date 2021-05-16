@@ -8,15 +8,7 @@
                 isNormalUser = true;
                 shell = pkgs.zsh;
                 home = "/data/home";
-                extraGroups = [
-                    "audio"
-                    "video"
-                    "vboxuser"
-                    "kvm"
-                    "networkmanager"
-                    "adbusers"
-                    "wheel"
-                ];
+                extraGroups = [ "audio" "video" "vboxuser" "kvm" "networkmanager" "adbusers" "wheel" ];
             };
         };
     };
