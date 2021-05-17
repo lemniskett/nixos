@@ -11,13 +11,14 @@
         ./drivers.nix
         ./env.nix
         ./locale.nix
-        ./networking.nix
+        ./network.nix
         ./security.nix
         ./virtualization.nix
         ./bebasid.nix
         ./nixpkgs.nix
         ./editor.nix
         ./scripts.nix
+        ./archbox.nix
     ];
     system.stateVersion = "20.09"; # Don't change
 }
