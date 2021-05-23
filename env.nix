@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
     environment = {
@@ -9,6 +9,8 @@
             XDG_CURRENT_DESKTOP = "sway";
             XDG_SESSION_TYPE = "wayland";
             QT_QPA_PLATFORM = "wayland";
+            TERMINAL = "foot";
+            GOROOT = "${pkgs.go.out}/share/go";
         };
     };
 }

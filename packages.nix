@@ -42,6 +42,7 @@
                 gnome3.adwaita-icon-theme
                 gnome3.nautilus
                 gnome3.eog
+                gnome.gnome-calculator
                 celluloid
                 xorg.xhost
                 nwg-launchers
@@ -82,6 +83,11 @@
             awscli2
             terraform_0_15
             file
+            dash
+            sshfs
+            podman-compose
+            python39
+            python39Packages.pip
         ];
     };
     fonts.fonts = with pkgs; [

@@ -19,7 +19,7 @@
             '';
             packages.myVimPackage = with pkgs.vimPlugins; {
                 start = [ 
-                    airline
+                    vim-airline
                     nord-vim
                 ];
             };
