@@ -21,14 +21,14 @@
         };
         kernel.sysctl = {
             "vm.swappiness" = 1;
-            "net.ipv4.ip_unprivileged_port_start" = 0;
         };
+        kernelModules = [ "vhost_vsock" ];
         kernelParams = [ 
             "acpi_backlight=vendor"
             "amdgpu.ppfeaturemask=0xffffffff"
             "net.ifnames=0"
         ];
-        kernelPackages = pkgs.linuxPackages_zen;
+        kernelPackages = pkgs.linuxPackages_5_12;
         initrd = {
             kernelModules = [ "amdgpu" ];
             compressor = "zstd";

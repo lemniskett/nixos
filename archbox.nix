@@ -6,8 +6,8 @@ let
         src = pkgs.fetchFromGitHub {
             owner = "lemniskett";
             repo = "archbox";
-            rev = "28b1123a0c0e9ea284eb79974aa7c6ebb4951116";
-            sha256 = "1a99y2kll9s091pz2c4sqxg3a80csak4hzwzc05wm7k3lm5klsbd";
+            rev = "a6293e6098383d7d64cdbb00e42970a24ec2451b";
+            sha256 = "1rgvd54h7xgankfaby938qm1saybpfh5g03njhk720pfmsazy7jc";
         };
         sourceRoot = ".";
         installPhase = ''
@@ -16,8 +16,13 @@ let
             export FORCE_INSTALL_CONFIG=1
             export ETC_DIR=$out/etc
             export PREFIX=$out
-            export ARCHBOX_USER=your_user_here
+            export ARCHBOX_USER=lemni
             export MOUNT_RUN=no
+	    export MOUNT_MOD=yes
+            export LAZY_UMOUNT=yes
+            export ENV_VAR="TERM=xterm-256color PATH=/usr/bin:/data/home/.local/bin:/usr/local/bin"
+            export SHARED_FOLDER="/data"
+            export SERVICES="lxd:5"
             ${pkgs.bash}/bin/bash install.sh
         '';
     };

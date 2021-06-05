@@ -78,7 +78,6 @@
             gimp
             evince
             desmume
-            qemu
             ansible
             awscli2
             terraform_0_15
@@ -88,6 +87,16 @@
             podman-compose
             python39
             python39Packages.pip
+            nodejs
+            php80
+            php80Packages.composer
+            libguestfs
+            jq
+            postman
+            vagrant
+            wdisplays
+            gnome.gedit
+            wpsoffice
         ];
     };
     fonts.fonts = with pkgs; [

@@ -16,9 +16,9 @@
         ./virtualization.nix
         ./bebasid.nix
         ./nixpkgs.nix
-        ./editor.nix
         ./scripts.nix
         ./archbox.nix
+	./editor.nix
     ];
     system.stateVersion = "20.09"; # Don't change
 }

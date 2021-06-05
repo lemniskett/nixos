@@ -3,7 +3,7 @@
 let
     chromium-ozone = pkgs.writeScriptBin "chromium" ''
         #!${pkgs.bash}/bin/bash
-        exec ${pkgs.chromium}/bin/chromium --enable-features=UseOzonePlatform --ozone-platform=wayland $*
+        exec ${pkgs.chromium}/bin/chromium --enable-features=UseOzonePlatform --ozone-platform=wayland "$*"
     '';
 in
 {
