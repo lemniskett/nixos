@@ -2,7 +2,9 @@
 
 {
     networking = {
-        networkmanager.enable = true;
+        networkmanager = {
+            enable = true;
+        };
         hostName = "mokounix";
     };
 }

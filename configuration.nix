@@ -5,6 +5,7 @@
         ./hardware-configuration.nix
         ./boot.nix
         ./packages.nix
+        ./cachix.nix
         ./locale.nix
         ./users.nix
         ./services.nix

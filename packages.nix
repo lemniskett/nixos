@@ -1,6 +1,9 @@
 { config, pkgs, ...}:
-
+let
+    wayland-overlay = (import (builtins.fetchTarball "https://github.com/colemickens/nixpkgs-wayland/archive/master.tar.gz"));
+in
 {
+    nixpkgs.overlays = [ wayland-overlay ];
     programs = {
         adb.enable = true;
         qt5ct.enable = true;
@@ -67,6 +70,7 @@
             libsForQt5.qtstyleplugins
             libnotify
             chromium
+            firefox-wayland
             ntfs3g
             neofetch
             starship
@@ -93,10 +97,18 @@
             libguestfs
             jq
             postman
-            vagrant
             wdisplays
             gnome.gedit
             wpsoffice
+            filezilla
+            vagrant
+            virt-manager
+            wireguard
+            obs-studio
+            obs-wlrobs
+            qbittorrent
+            heroku
+            wlfreerdp
         ];
     };
     fonts.fonts = with pkgs; [

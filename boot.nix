@@ -28,7 +28,8 @@
             "amdgpu.ppfeaturemask=0xffffffff"
             "net.ifnames=0"
         ];
-        kernelPackages = pkgs.linuxPackages_5_12;
+        kernelPackages = pkgs.linuxPackages_zen;
+        extraModulePackages = with pkgs.linuxPackages_zen; [ v4l2loopback ];
         initrd = {
             kernelModules = [ "amdgpu" ];
             compressor = "zstd";

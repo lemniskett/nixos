@@ -10,7 +10,7 @@
             XDG_SESSION_TYPE = "wayland";
             QT_QPA_PLATFORM = "wayland";
             TERMINAL = "foot";
-            GOROOT = "${pkgs.go.out}/share/go";
+            VAGRANT_DEFAULT_PROVIDER = "libvirt";
         };
     };
 }

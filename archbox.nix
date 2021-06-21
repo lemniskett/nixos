@@ -18,7 +18,7 @@ let
             export PREFIX=$out
             export ARCHBOX_USER=lemni
             export MOUNT_RUN=no
-	    export MOUNT_MOD=yes
+    	    export MOUNT_MOD=yes
             export LAZY_UMOUNT=yes
             export ENV_VAR="TERM=xterm-256color PATH=/usr/bin:/data/home/.local/bin:/usr/local/bin"
             export SHARED_FOLDER="/data"
