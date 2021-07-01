@@ -48,7 +48,6 @@ in
                 gnome.gnome-calculator
                 celluloid
                 xorg.xhost
-                nwg-launchers
                 lxappearance-gtk2
                 pulseaudio
                 lxsession
@@ -74,7 +73,7 @@ in
             ntfs3g
             neofetch
             starship
-            wget
+            aria2
             unzip
             zip
             vscode
@@ -83,7 +82,6 @@ in
             evince
             desmume
             ansible
-            awscli2
             terraform_0_15
             file
             dash
@@ -102,13 +100,19 @@ in
             wpsoffice
             filezilla
             vagrant
-            virt-manager
             wireguard
             obs-studio
             obs-wlrobs
             qbittorrent
             heroku
             wlfreerdp
+            mariadb-client
+            inetutils
+            staruml
+            sqlite-interactive
+            unrar
+            fzf
+            j4-dmenu-desktop
         ];
     };
     fonts.fonts = with pkgs; [

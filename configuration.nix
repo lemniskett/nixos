@@ -18,8 +18,8 @@
         ./bebasid.nix
         ./nixpkgs.nix
         ./scripts.nix
-        ./archbox.nix
-	./editor.nix
+        # ./archbox.nix
+	    ./editor.nix
     ];
     system.stateVersion = "20.09"; # Don't change
 }

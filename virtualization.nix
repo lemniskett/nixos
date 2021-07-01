@@ -3,11 +3,11 @@
 {
     virtualisation = {
         virtualbox.host = {
-            enable = false;
+            enable = true;
             enableExtensionPack = false;
             addNetworkInterface = false;
         };
         podman.enable = true;
-        libvirtd.enable = true;
+        libvirtd.enable = false;
     };
 }

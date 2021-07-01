@@ -10,7 +10,6 @@
             XDG_SESSION_TYPE = "wayland";
             QT_QPA_PLATFORM = "wayland";
             TERMINAL = "foot";
-            VAGRANT_DEFAULT_PROVIDER = "libvirt";
         };
     };
 }
