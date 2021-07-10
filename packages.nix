@@ -81,17 +81,10 @@ in
             gimp
             evince
             desmume
-            ansible
-            terraform_0_15
             file
             dash
             sshfs
-            podman-compose
-            python39
-            python39Packages.pip
-            nodejs
-            php80
-            php80Packages.composer
+            docker-compose
             libguestfs
             jq
             postman
@@ -100,19 +93,18 @@ in
             wpsoffice
             filezilla
             vagrant
+            awscli2
+            virt-manager
             wireguard
             obs-studio
             obs-wlrobs
             qbittorrent
-            heroku
-            wlfreerdp
-            mariadb-client
             inetutils
             staruml
-            sqlite-interactive
             unrar
             fzf
             j4-dmenu-desktop
+            bc
         ];
     };
     fonts.fonts = with pkgs; [

@@ -3,11 +3,17 @@
 {
     virtualisation = {
         virtualbox.host = {
-            enable = true;
+            enable = false;
             enableExtensionPack = false;
             addNetworkInterface = false;
         };
-        podman.enable = true;
-        libvirtd.enable = false;
+        podman.enable = false;
+        docker = {
+            enable = true;
+            autoPrune.enable = true;
+        };
+        containers.registries.search = [ "docker.io" ];
+        libvirtd.enable = true;
+        xen.enable = false;
     };
 }
